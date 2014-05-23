@@ -1,0 +1,4 @@
+This outer folder is just a container for my project. Can rename it whatever I want
+manage.py lets me interact with this django project
+inner mysite is python package for project
+
