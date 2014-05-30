@@ -1,3 +1,8 @@
+<!--Line Below loads static template tag form staticfiles template directory, generating the absolute url of static file. -->
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
 {% if latest_poll_list %}
 	<ul>
 		{% for poll in latest_poll_list %}
