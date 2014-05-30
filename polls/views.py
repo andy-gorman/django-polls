@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
+from django.utils import timezone
 
 from polls.models import Poll, Choice
 
@@ -26,7 +27,9 @@ class IndexView(generic.ListView):
 
 	def get_queryset(self):
 		#Return 5 most recent polls
-		return Poll.objects.order_by('-pub_date')[:5]
+		return Poll.objects.filter(
+			pub_date__lte=timezone.now() #filters out future polls
+			).order_by('-pub_date')[:5]
 
 #Below is the 'hard way' to do what is above. Got rid of it to reduce code reduncdancy
 """def index(request):
@@ -44,6 +47,9 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
 	model = Poll
 	template_name = 'polls/detail.html'
+
+	def get_queryset(self):
+		return Poll.objects.filter(pub_date__lte=timezone.now())
 
 #'hard way'
 """def detail(request, poll_id): 
