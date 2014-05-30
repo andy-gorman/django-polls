@@ -6,6 +6,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
 	#namespace argument lets django diffenteriate between the different
 	#apps.
-    url(r'^polls/', include('polls.urls'), namespace="polls"),
+    url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^admin/', include(admin.site.urls)),
 )
