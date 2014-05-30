@@ -2,3 +2,9 @@ This outer folder is just a container for my project. Can rename it whatever I w
 manage.py lets me interact with this django project
 inner mysite is python package for project
 
+When defining URLCONFs, the regular expressions don't end in the "$", but a slash, because when django uses include(), it chops off the matching part of the string, and matches the remainder against the included URLConf.
+
+URLS:
+	Using parenthesis around a pattern "captures" whatever matches the regex, and sends it off to the corresponding view function.
+	?P<poll_id> defines the variable name, and \d+ is the regular expression that will match a number.
+	
